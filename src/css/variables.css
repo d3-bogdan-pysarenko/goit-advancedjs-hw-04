@@ -1,0 +1,18 @@
+/* Defines global variables for the website, including colors, fonts, and spacing. */
+
+:root {
+  --color-black: #242424;
+  --color-purple: #bd34fe;
+  --color-white: white;
+  --color-teal: #35839473;
+  --color-grey: #9f9fca;
+  --color-cards-green: #adecc2dc;
+  --color-lughtBlue: #41d1ff;
+  --color-blue-nav: #4b53f5d6;
+  --color-blue-deep: #2104dd;
+  --color-lightGrey: #808080;
+  --color-steel: #2e2f42;
+
+  /* transitions */
+  --smooth-timing: 300ms ease-in;
+}
