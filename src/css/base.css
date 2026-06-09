@@ -45,7 +45,11 @@ main:has(.back-link) {
 .main-title-gradient {
   display: block;
   font-size: 2.5em;
-  background-image: linear-gradient(120deg, var(--color-purple) 25%, var(--color-blue-deep));
+  background-image: linear-gradient(
+    120deg,
+    var(--color-purple) 25%,
+    var(--color-blue-deep)
+  );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -63,7 +67,11 @@ main:has(.back-link) {
 .title-gradient {
   display: block;
   font-size: 1.5em;
-  background-image: linear-gradient(120deg, var(--color-purple) 30%, var(--color-lughtBlue));
+  background-image: linear-gradient(
+    120deg,
+    var(--color-purple) 30%,
+    var(--color-lughtBlue)
+  );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -92,8 +100,8 @@ button {
 }
 
 button:hover,
-button:active{
+button:active {
   background-color: var(--color-purple);
-  outline: 2px solid var(--color-purple); 
+  outline: 2px solid var(--color-purple);
   outline-offset: 0px;
 }
