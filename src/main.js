@@ -28,6 +28,16 @@ function notifyNoResults() {
   });
 }
 
+function notifyWarning(message) {
+  iziToast.warning({
+    message,
+    position: 'topRight',
+    messageColor: '#fff',
+    backgroundColor: '#cfc127',
+    timeout: 3000,
+  });
+}
+
 function notifyError(message) {
   iziToast.error({
     message,
@@ -60,8 +70,8 @@ refs.form.addEventListener('submit', async event => {
     totalHits = data.totalHits;
 
     if (data.hits.length === 0) {
-      notifyError(
-        'There are no images matching your search query. Try search with dufferent key!'
+      notifyWarning(
+        'There are no images matching your search query. Try search with different key!'
       );
       return;
     }
@@ -103,7 +113,7 @@ refs.loadMoreButton.addEventListener('click', async () => {
       showLoadMoreButton();
     }
   } catch {
-    notifyError('Something went wrong. Please try again later.');
+    notifyError('Ooops, something went wrong....');
   } finally {
     hideLoader();
   }
