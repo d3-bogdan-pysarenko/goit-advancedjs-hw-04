@@ -6,7 +6,7 @@ export const refs = {
   loader: document.querySelector('.loader'),
   loadMoreButton: document.querySelector('.load-more'),
   form: document.querySelector('.form'),
-}
+};
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -79,4 +79,3 @@ export function showLoadMoreButton() {
 export function hideLoadMoreButton() {
   refs.loadMoreButton.classList.add('is-hidden');
 }
-

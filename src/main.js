@@ -12,7 +12,7 @@ import {
   hideLoadMoreButton,
 } from './js/render-functions';
 
-const NO_MORE_RESULTS_MESSAGE = "There are no more items to show on set query!";
+const NO_MORE_RESULTS_MESSAGE = 'There are no more items to show on set query!';
 
 let currentQuery = '';
 let currentPage = 1;
@@ -20,21 +20,21 @@ let totalHits = 0;
 
 function notifyNoResults() {
   iziToast.info({
-      message: NO_MORE_RESULTS_MESSAGE,
-      position: 'topRight',
-      messageColor: '#fff',
-      backgroundColor: '#6366f1',
-      timeout: 3000,
+    message: NO_MORE_RESULTS_MESSAGE,
+    position: 'topRight',
+    messageColor: '#fff',
+    backgroundColor: '#6366f1',
+    timeout: 3000,
   });
 }
 
 function notifyError(message) {
   iziToast.error({
-      message,
-      position: 'topRight',
-      messageColor: '#fff',
-      backgroundColor: '#EF4040',
-      timeout: 3000,
+    message,
+    position: 'topRight',
+    messageColor: '#fff',
+    backgroundColor: '#EF4040',
+    timeout: 3000,
   });
 }
 
@@ -52,27 +52,28 @@ refs.form.addEventListener('submit', async event => {
   totalHits = 0;
 
   clearGallery();
-  hideLoadMoreButton()
+  hideLoadMoreButton();
   showLoader();
 
-try {
-  const data = await getImagesByQuery(currentQuery, currentPage);
-  totalHits = data.totalHits;
+  try {
+    const data = await getImagesByQuery(currentQuery, currentPage);
+    totalHits = data.totalHits;
 
-  if (data.hits.length === 0) {
-    notifyError('There are no images matching your search query. Try search with dufferent key!');
-    return;
-  }
+    if (data.hits.length === 0) {
+      notifyError(
+        'There are no images matching your search query. Try search with dufferent key!'
+      );
+      return;
+    }
 
-  createGallery(data.hits);
+    createGallery(data.hits);
 
-  if (currentPage * RECORDS_PER_PAGE < totalHits) {
-    showLoadMoreButton();
-  } else {
+    if (currentPage * RECORDS_PER_PAGE < totalHits) {
+      showLoadMoreButton();
+    } else {
       notifyNoResults();
-  }
-
-} catch (err) {
+    }
+  } catch (err) {
     notifyError('Ooops, something went wrong....');
     console.log(err);
   } finally {
@@ -92,18 +93,18 @@ refs.loadMoreButton.addEventListener('click', async () => {
 
     const firstCard = refs.gallery.firstElementChild;
     if (firstCard) {
-        const { height } = firstCard.getBoundingClientRect();
-        window.scrollBy({ top: height * 2, behavior: 'smooth' });
+      const { height } = firstCard.getBoundingClientRect();
+      window.scrollBy({ top: height * 2, behavior: 'smooth' });
     }
 
     if (currentPage * RECORDS_PER_PAGE >= totalHits) {
-        notifyNoResults();
+      notifyNoResults();
     } else {
-        showLoadMoreButton();
+      showLoadMoreButton();
     }
   } catch {
-      notifyError('Something went wrong. Please try again later.');
+    notifyError('Something went wrong. Please try again later.');
   } finally {
-      hideLoader();
+    hideLoader();
   }
 });
